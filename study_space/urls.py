@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from studyspace.views import get_spaces_list, get_home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', get_home, name='home'),
+    path('spaces/', get_spaces_list, name='spaces')
 ]
