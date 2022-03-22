@@ -13,19 +13,19 @@ SPACE_TYPE_CHOICES = (
 
 class Space(models.Model):
     """ Study spaces to choose from """
-    name = models.CharField(max_length=25, unique=True)
+    name = models.CharField(max_length=25, unique=True, blank=True)
     max_capacity = models.IntegerField(default=1, null=False, blank=False)
     type = models.CharField(
         choices=SPACE_TYPE_CHOICES,
         default='open',
         max_length=25)
-    available_tech = models.TextField(max_length=100)
+    available_tech = models.TextField(max_length=100, blank=True, null=True)
 
     def __str__(self):
-        if self.name:
-            return f'{self.name}'
-        else:
-            return f'Room {self.id}'  # not an issue
+        if not self.name:
+            self.name = f'Room {self.id}'  # not an issue
+            self.save()
+        return self.name
 
 
 class Reservation(models.Model):
@@ -45,7 +45,7 @@ class Reservation(models.Model):
 
     class Meta:
         """Meta class for Reservation"""
-        ordering = ['start']
+        ordering = ['-start']
 
     def __str__(self):
         return f'{self.start} - {self.space}'

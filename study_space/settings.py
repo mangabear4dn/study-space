@@ -81,16 +81,17 @@ WSGI_APPLICATION = 'study_space.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-DATABASES = {
-    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
-}
+if os.path.isfile('env.py'):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+else:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -116,13 +117,17 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Berlin'
 
 USE_I18N = True
 
 USE_L10N = True
 
 USE_TZ = True
+
+DATETIME_INPUT_FORMATS = [
+    '%Y-%m-%d %H:%M:%S'
+]
 
 
 # Static files (CSS, JavaScript, Images)
