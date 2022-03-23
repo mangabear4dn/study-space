@@ -15,11 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from studyspace.views import get_spaces_list, get_home
+from studyspace import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
-    path('', get_home, name='home'),
-    path('spaces/', get_spaces_list, name='spaces')
+    path('', views.get_home, name='home'),
+    path('spaces/', views.get_spaces_list, name='spaces'),
+    path('profile/', views.get_my_profile, name='profile'),
+    path('reserve/', views.reserve, name='reserve')
 ]

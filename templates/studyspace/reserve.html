@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Reserve" %}{% endblock %}
+
+{% block content %}
+<h1>{% trans "Make a reservation" %}</h1>
+
+<form class="reserve" id="reserve_form" method="post" action='reserve'>
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button class="btn btn-outline-dark" type="submit">{% trans "Reserve" %} &raquo;</button>
+</form>
+
+{% endblock %}

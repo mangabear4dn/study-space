@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+<h1>{% trans "Hello, " %}{{request.user}}!</h1>
+    <form method="post" action='reserve'>
+    {% csrf_token %}
+    <h4>Would you like to make a reservation?</h4>
+    <button class="btn btn-outline-dark d-inline" type="submit">{% trans "Make a reservation" %} &raquo;</button>
+  </form>
+<h3>Here are your reservations:</h3>
+    <div class="row">
+        <div class="col table-responsive">
+            <table class="table">
+            {% for rez in reservations %}
+            <tr>
+                <td>{{rez.start}}</td>
+                <td>{{rez.space.name}}</td>
+                <td>{{rez.username}}</td>
+            </tr>
+
+            {% endfor%}
+            </table>
+        </div>
+    </div>
+
+{% endblock %}
