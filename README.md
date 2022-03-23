@@ -1,5 +1,7 @@
 # StudySpace project
 
+<a href="{{ url_for('static' filename='images/wireframes-studyspace.pdf') }}">Wireframes</a>
+
 **Concept:** StudySpace is a website of a (fictional) company that functions in a similar way as coworking spaces but is targeted towards students.
 
 **Target Audience:** Mainly local students looking for a space to come study individually or in a group if necessary.
