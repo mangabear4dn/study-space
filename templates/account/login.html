@@ -12,7 +12,7 @@
 <p>{% blocktrans %}If you have not created an account yet, then please
 <a class="badge badge-secondary" href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
 
-<form class="login badge badge-secondary" method="POST" action="{% url 'account_login' %}">
+<form class="login" method="POST" action="{% url 'account_login' %}">
   {% csrf_token %}
   {{ form.as_p }}
   {% if redirect_field_value %}
