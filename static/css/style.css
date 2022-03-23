@@ -1,7 +1,20 @@
-header {
-    background-color: green;
+.midnight {
+    color: midnightblue;
 }
 
-footer {
-    background-color: red;
+nav > .midnight span {
+    letter-spacing: 2px;
+    font-size: small;
+    padding-right: 10px;
+}
+
+.container {
+    padding-top: 25px;
+    padding-bottom: 35px;
+}
+
+.foot {
+    padding: 15px;
+    color: #bfbfbf;
+    background-color: grey;
 }

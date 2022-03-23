@@ -5,20 +5,49 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="This is a website for reserving study spaces for students.">
+    <meta name="keywords" content="student, study, studies, studyspace, study group, reservation, booking">
+    <meta name="author" content="Luize Blake">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
     <title>Study Space</title>
 </head>
 <body>
-    <header class="row">
-        <div class="col col-6">hello</div>
-    </header>
-    <section class="container-fluid">
+    <!-- Reference for navigation bar: https://getbootstrap.com/docs/4.0/components/navbar/ 
+    with CI tutorials -->
+    <nav class="navbar navbar-expand-sm navbar-light bg-secondary">
+        <a class="navbar-brand midnight" href="#">Studyspace</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link text-decoration-underline" href="{% url 'home' %}">Home</a>
+            </li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                    <a class="nav-link" href="{% url 'account_logout'%}">Logout</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                    <a class="nav-link" href="{% url 'account_login'%}">Sign In</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="{% url 'account_signup'%}">Sign Up</a>
+                    </li>
+                {% endif %}
+        </ul>
+    </nav>
+    <section class="container body">
         {% block content %}
         {% endblock %}
     </section>
-    <footer class="row">
-        <div class="col col-6">hello</div>
+    <footer class="foot"></nav>
+        <div class="row justify-content-center foot">
+            <div class="col col-md-4 justify-content-center"><span class="align-self-center">...in the zone</span></div>
+        </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
     <script src="{% static 'js/scrip.js' %}"></script>
